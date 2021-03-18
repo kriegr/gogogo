@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/onsi/gomega/types"
-	"github.com/rotisserie/eris"
 )
 
 func EqualsBytes(expected []byte) types.GomegaMatcher {
@@ -23,7 +22,7 @@ func (matcher *equalsBytesMatcher) Match(actual interface{}) (bool, error) {
 	var ok bool
 	matcher.actualBytes, ok = actual.([]byte)
 	if !ok {
-		return false, eris.New("actual needs to be a byte slice.")
+		return false, fmt.Errorf("actual needs to be a byte slice.")
 	}
 
 	for idx, byte := range matcher.actualBytes {
