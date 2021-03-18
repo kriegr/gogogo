@@ -8,7 +8,8 @@ import (
 	"github.com/onsi/ginkgo/reporters"
 )
 
-func RunSpecWithJUnit(packageName string, t ginkgo.GinkgoTestingT) {
+// RunSpecsWithJunit runs specs with junit reporter enabled. It creates a *_junit.xml.
+func RunSpecsWithJUnit(packageName string, t ginkgo.GinkgoTestingT) {
 	junitReporter := reporters.NewJUnitReporter(fmt.Sprintf("%s_junit.xml", strings.ToLower(packageName)))
 	ginkgo.RunSpecsWithDefaultAndCustomReporters(t, fmt.Sprintf("%s Suite", packageName), []ginkgo.Reporter{junitReporter})
 }
